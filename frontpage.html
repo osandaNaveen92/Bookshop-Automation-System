@@ -38,35 +38,35 @@
 
         <section class="category-section">
             <div class="categories">
-                <div class="category-item" onclick="selectCategory('Fiction')">
+                <div class="category-item" onclick="redirectToCategory('Fiction')">
                     <img src="images_fictions.jpg" alt="Fiction">
                     <p>Fiction</p>
                 </div>
-                <div class="category-item" onclick="selectCategory('Science')">
+                <div class="category-item" onclick="redirectToCategory('Science')">
                     <img src="images_science.jpg" alt="Science">
                     <p>Science</p>
                 </div>
-                <div class="category-item" onclick="selectCategory('History')">
+                <div class="category-item" onclick="redirectToCategory('History')">
                     <img src="image_history.jpeg" alt="History">
                     <p>History</p>
                 </div>
-                <div class="category-item" onclick="selectCategory('Technology')">
+                <div class="category-item" onclick="redirectToCategory('Technology')">
                     <img src="image_technology.jpeg" alt="Technology">
                     <p>Technology</p>
                 </div>
-                <div class="category-item" onclick="selectCategory('Comics')">
+                <div class="category-item" onclick="redirectToCategory('Comics')">
                     <img src="image_comic.jpeg" alt="Comics">
                     <p>Comics</p>
                 </div>
-                <div class="category-item" onclick="selectCategory('Biographies')">
+                <div class="category-item" onclick="redirectToCategory('Biographies')">
                     <img src="image_biographies.jpeg" alt="Biographies">
                     <p>Biographies</p>
                 </div>
-                <div class="category-item" onclick="selectCategory('Mystery')">
+                <div class="category-item" onclick="redirectToCategory('Mystery')">
                     <img src="image_mistery.jpg" alt="Mystery">
                     <p>Mystery</p>
                 </div>
-                <div class="category-item" onclick="selectCategory('Romance')">
+                <div class="category-item" onclick="redirectToCategory('Romance')">
                     <img src="image_romance.jpeg" alt="Romance">
                     <p>Romance</p>
                 </div>
@@ -121,6 +121,10 @@
             if (event.target !== popup && event.target !== loginBtn) {
                 popup.style.display = 'none';
             }
+        }
+
+        function redirectToCategory(category) {
+            window.location.href = `category page/category.html?category=${encodeURIComponent(category)}`;
         }
     </script>
 
