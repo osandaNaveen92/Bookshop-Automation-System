@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>CREATING A NEW ACCOUNT</h2>
+        <p>When you are new you can create your account here. Enter your details below.</p>
+        <div class="form-container">
+            <div class="personal-data">
+                <h3>PERSONAL DATA</h3>
+                <form id="register-form">
+                    <label>Name*</label>
+                    <input type="text" name="name" required>
+                    
+                    <label>Country*</label>
+                    <select name="country" required>
+                        <option value="">Select Country</option>
+                        <option value="USA">United States</option>
+                        <option value="India">India</option>
+                    </select>
+                    
+                    <label>State*</label>
+                    <input type="text" name="state" required>
+                    
+                    <label>City*</label>
+                    <input type="text" name="city" required>
+                    
+                    <label>Address*</label>
+                    <input type="text" name="address" required>
+                    
+                    <label>Zip Code*</label>
+                    <input type="text" name="zipcode" required>
+                    
+                    <label>Phone Number</label>
+                    <input type="text" name="phone">
+                </form>
+            </div>
+            <div class="login-data">
+                <h3>LOGIN DATA</h3>
+                <form id="login-form">
+                    <label>Email Address*</label>
+                    <input type="email" name="email" required>
+                    
+                    <label>Password*</label>
+                    <input type="password" name="password" id="password" required>
+                    <span id="password-strength"></span>
+                    
+                    <label>Confirm Password*</label>
+                    <input type="password" name="confirm-password" required>
+                    
+                    <button type="submit">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

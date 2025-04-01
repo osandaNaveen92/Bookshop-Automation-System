@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenBooks System</title>
+    <link rel="stylesheet" href="front_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <h1>GenBooks</h1>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li><a href="login page/user_registration.html"><i class="fas fa-register"></i> Register</a></li>
+                <li style="position: relative;">
+                    <button id="loginBtn" onclick="toggleLoginPopup()"><i class="fas fa-user"></i> Login</button>
+                    <div id="loginPopup">
+                        <button onclick="login('user')">Login as User</button>
+                        <button onclick="login('admin')">Login as Admin</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <h2>Find Your Favorite Books</h2>
+            <input type="text" id="searchBox" placeholder="Search for books...">
+            <button onclick="searchBook()">Search</button>
+            <div id="searchResults" style="margin-top: 20px;"></div> <!-- Search results will appear here -->
+        </section>
+
+        <section class="category-section">
+            <div class="categories">
+                <div class="category-item" onclick="selectCategory('Fiction')">
+                    <img src="images_fictions.jpg" alt="Fiction">
+                    <p>Fiction</p>
+                </div>
+                <div class="category-item" onclick="selectCategory('Science')">
+                    <img src="images_science.jpg" alt="Science">
+                    <p>Science</p>
+                </div>
+                <div class="category-item" onclick="selectCategory('History')">
+                    <img src="image_history.jpeg" alt="History">
+                    <p>History</p>
+                </div>
+                <div class="category-item" onclick="selectCategory('Technology')">
+                    <img src="image_technology.jpeg" alt="Technology">
+                    <p>Technology</p>
+                </div>
+                <div class="category-item" onclick="selectCategory('Comics')">
+                    <img src="image_comic.jpeg" alt="Comics">
+                    <p>Comics</p>
+                </div>
+                <div class="category-item" onclick="selectCategory('Biographies')">
+                    <img src="image_biographies.jpeg" alt="Biographies">
+                    <p>Biographies</p>
+                </div>
+                <div class="category-item" onclick="selectCategory('Mystery')">
+                    <img src="image_mistery.jpg" alt="Mystery">
+                    <p>Mystery</p>
+                </div>
+                <div class="category-item" onclick="selectCategory('Romance')">
+                    <img src="image_romance.jpeg" alt="Romance">
+                    <p>Romance</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: About the Store and Value of Books -->
+        <section class="info-section">
+            <div class="info-container">
+                <div class="info-image">
+                    <img src="image_bookvalue.png" alt="Value of Books">
+                </div>
+                <div class="info-text">
+                    <h2>Discover the Value of Books</h2>
+                    <p>Books are a gateway to knowledge, imagination, and inspiration. At GenBooks, we believe in the transformative power of reading. Explore our collection to find books that resonate with your interests and enrich your life.</p>
+                    <button onclick="learnMore()">Learn More</button>
+                </div>
+            </div>
+
+            <div class="info-container">
+                <div class="info-text">
+                    <h2>Check Your Selected Books</h2>
+                    <p>Keep track of your favorite books and manage your selections effortlessly. Our store provides a seamless experience to ensure you never miss out on the books you love.</p>
+                    <button onclick="viewCart()">View Cart</button>
+                </div>
+                <div class="info-image">
+                    <img src="image_cart.png" alt="About the Store">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Toggle the login popup
+        function toggleLoginPopup() {
+            const popup = document.getElementById('loginPopup');
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function login(type) {
+            if (type === 'user') {
+                window.location.href = "user_login.html";
+            } else if (type === 'admin') {
+                window.location.href = "admin_login.html"; // Redirect to admin login page
+            }
+        }
+
+        // Close the login popup if clicked outside
+        window.onclick = function(event) {
+            const popup = document.getElementById('loginPopup');
+            const loginBtn = document.getElementById('loginBtn');
+            if (event.target !== popup && event.target !== loginBtn) {
+                popup.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
