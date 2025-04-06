@@ -9,23 +9,27 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection
-const uri = 'mongodb://localhost:2701mongodb://localhost:27017/'; // Replace with your MongoDB URI
-const client = new MongoClient(uri);
+// MongoDB connection URI and database name
+const uri = 'mongodb://localhost:27017/'; // Replace with your MongoDB URI
 const dbName = 'Bookshop_Automation'; // Replace with your database name
+
+// Create a MongoClient instance
+const client = new MongoClient(uri);
 
 let db;
 
+// Function to connect to MongoDB
 async function connectToDatabase() {
     try {
-        await client.connect();
-        db = client.db(dbName);
+        await client.connect(); // Connect to the MongoDB server
+        db = client.db(dbName); // Select the database
         console.log('Connected to MongoDB');
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
     }
 }
 
+// Call the function to connect
 connectToDatabase();
 
 // API Endpoint to Add Items to Cart
@@ -85,6 +89,36 @@ app.get('/search-books', async (req, res) => {
         console.error('Error searching books:', error);
         res.status(500).send({ error: 'An error occurred while searching for books' });
     }
+});
+
+// API Endpoint to Register User
+app.post('/register-user', async (req, res) => {
+    const { name, address, zipcode, phone, email, password } = req.body;
+
+    try {
+        const usersCollection = db.collection('Customers'); // Replace 'users' with your desired collection name
+        await usersCollection.insertOne({ name, address, zipcode, phone, email, password });
+        res.status(201).send({ message: 'User registered successfully' });
+    } catch (error) {
+        console.error('Error registering user:', error);
+        res.status(500).send({ error: 'An error occurred while registering the user' });
+    }
+});
+
+// API Endpoint to Get Sales Report
+app.get('/sales-report', async (req, res) => {
+    const { start, end } = req.query;
+
+    // Replace this with actual database queries
+    const salesData = {
+        dailySales: 500,
+        monthlySales: 15000,
+        yearlySales: 180000,
+        dates: ['2025-04-01', '2025-04-02', '2025-04-03'], // Example dates
+        sales: [200, 300, 500], // Example sales data
+    };
+
+    res.json(salesData);
 });
 
 // Start Server

@@ -1,28 +1,20 @@
-document.getElementById('adminLoginForm').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Prevent form submission
+document.getElementById('adminLoginForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the form from submitting normally
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    try {
-        // Simulate sending login data to the server
-        const response = await fetch('http://localhost:3000/admin-login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
-        });
+    // Example hardcoded credentials (replace with actual validation logic)
+    const validUsername = 'admin';
+    const validPassword = 'admin123';
 
-        if (response.ok) {
-            // Redirect to admin dashboard or show success message
-            window.location.href = 'admin_dashboard.html';
-        } else {
-            const error = await response.json();
-            document.getElementById('errorMessage').textContent = error.message || 'Invalid login credentials';
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        document.getElementById('errorMessage').textContent = 'An error occurred. Please try again.';
+    if (username === validUsername && password === validPassword) {
+        // Redirect to admin.html on successful login
+        window.location.href = 'admin_page/admin.html';
+    } else {
+        // Display an error message for invalid credentials
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = 'Invalid username or password. Please try again.';
+        errorMessage.style.color = 'red';
     }
 });

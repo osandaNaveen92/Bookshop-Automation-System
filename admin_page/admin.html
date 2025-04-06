@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <script src="chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>BookStorePro</h2> <!-- Updated company name -->
+            <ul>
+                <li><a href="#dashboard" onclick="showSection('dashboard')">Dashboard</a></li>
+                <li><a href="#requests" onclick="showSection('requests')">Requests</a></li> <!-- Changed from "Order" to "Requests" -->
+                <li><a href="#report" onclick="showSection('report')">Report</a></li>
+                <li><a href="#user-access" onclick="showSection('user-access')">User Access</a></li>
+                <li><a href="#publishers" onclick="showSection('publishers')">Publishers</a></li> <!-- New section -->
+                <li><a href="#support" onclick="showSection('support')">Support</a></li>
+                <li><a href="#settings" onclick="showSection('settings')">Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Admin Dashboard</h1>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section">
+                <h2>Dashboard Overview</h2>
+                <div class="graphs">
+                    <div class="graph-container">
+                        <h3>Total Profit</h3>
+                        <canvas id="profitChart"></canvas>
+                    </div>
+                    <div class="graph-container">
+                        <h3>Total Sales</h3>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Requests Section -->
+            <section id="requests" class="section hidden">
+                <h2>Customer Requests</h2>
+                <p>Below are the books requested by customers that are currently unavailable:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Author</th>
+                            <th>Requested By</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be dynamically loaded from the database -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Report Section -->
+            <section id="report" class="section hidden">
+                <h2>Sales Report</h2>
+                <div class="graphs">
+                    <div class="graph-container">
+                        <h3>Sales Overview</h3>
+                        <canvas id="salesOverviewChart"></canvas>
+                    </div>
+                    <div class="graph-container">
+                        <h3>Threshold Books</h3>
+                        <p>Note: This section will display books below the threshold from the inventory page.</p>
+                    </div>
+                    <div class="graph-container">
+                        <h3>Best Selling Books</h3>
+                        <p>Note: This section will display best-selling books from the inventory page.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Access Section -->
+            <section id="user-access" class="section hidden">
+                <h2>Manage Employees</h2>
+                <p>View and manage employees and managers by branch:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Branch</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be dynamically loaded from the database -->
+                    </tbody>
+                </table>
+                <h3>Add New Employee</h3>
+                <form id="add-employee-form">
+                    <label for="employee-name">Name:</label>
+                    <input type="text" id="employee-name" name="employee-name" required>
+                    <label for="employee-role">Role:</label>
+                    <select id="employee-role" name="employee-role">
+                        <option value="manager">Manager</option>
+                        <option value="employee">Employee</option>
+                    </select>
+                    <label for="employee-branch">Branch:</label>
+                    <input type="text" id="employee-branch" name="employee-branch" required>
+                    <button type="submit">Add Employee</button>
+                </form>
+            </section>
+
+            <!-- Publishers Section -->
+            <section id="publishers" class="section hidden">
+                <h2>Publishers</h2>
+                <p>Manage publisher details and order books:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Publisher Name</th>
+                            <th>Contact</th>
+                            <th>Books Available</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be dynamically loaded from the database -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Support Section -->
+            <section id="support" class="section hidden">
+                <h2>Support</h2>
+                <p>Contact support for any issues or queries.</p>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section hidden">
+                <h2>Settings</h2>
+                <p>Configure application settings here.</p>
+            </section>
+        </main>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>
